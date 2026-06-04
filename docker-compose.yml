@@ -291,7 +291,7 @@ services:
       VITE_EVOAI_API_URL: ${VITE_EVOAI_API_URL:-http://localhost:5555}
       VITE_AGENT_PROCESSOR_URL: ${VITE_AGENT_PROCESSOR_URL:-http://localhost:8000}
     ports:
-      - "5173:80"
+      - "5173:5173"
     depends_on:
       evo-auth:
         condition: service_healthy

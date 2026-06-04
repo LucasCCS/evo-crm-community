@@ -1,0 +1,22 @@
+services:
+  evo-frontend:
+    build:
+      context: ./evo-ai-frontend-community
+      dockerfile: Dockerfile.dev
+      args: {}
+    volumes:
+      - ./evo-ai-frontend-community:/app
+      - frontend_dev_node_modules:/app/node_modules
+    ports:
+      - "5173:5173"
+    environment:
+      VITE_API_URL: ${VITE_API_URL:-http://localhost:3000}
+      VITE_AUTH_API_URL: ${VITE_AUTH_API_URL:-http://localhost:3001}
+      VITE_WS_URL: ${VITE_WS_URL:-http://localhost:3000}
+      VITE_EVOAI_API_URL: ${VITE_EVOAI_API_URL:-http://localhost:5555}
+      VITE_AGENT_PROCESSOR_URL: ${VITE_AGENT_PROCESSOR_URL:-http://localhost:8000}
+    healthcheck:
+      disable: true
+
+volumes:
+  frontend_dev_node_modules:
